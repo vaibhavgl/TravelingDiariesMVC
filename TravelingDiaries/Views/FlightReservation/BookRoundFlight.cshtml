@@ -1,0 +1,45 @@
+﻿
+<style>
+    .button {
+			  border: none;
+			  color: white;
+			  padding: 15px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 16px;
+			  margin: 4px 2px;
+			  cursor: pointer;
+			}
+
+			.button1 {background-color: #4CAF50;} /* Green */
+			.button2 {background-color: #008CBA;} /* Blue */
+</style>
+
+
+<table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Flight Id</th>
+                <th scope="col">Flight Name</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Time</th>
+                <th scope="col">Bookings</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in (IEnumerable<Flight>)ViewData["Flights"])
+            {
+                <tr>
+                    <td>@flight.FlightId</td>
+                    <td>@flight.FlightName</td>
+                    <td>@flight.From</td>
+                    <td>@flight.To</td>
+                    <td>@flight.Time</td>
+                    
+                    <td><a asp-controller="FlightReservation" asp-action="BookFlight" asp-route-id="@flight.FlightId"><button class="button button2">Book Now</button></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>

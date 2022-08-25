@@ -1,0 +1,12 @@
+﻿
+@if(ViewBag.admin ==1)
+{
+     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CM</a>
+          <div class="dropdown-menu" style="background: rgba(255, 255, 255, 0.2)">
+            <a style="color:black;" class="dropdown-item" asp-action="Create" asp-controller="ContentManagement">Create Place</a>
+            <a style="color:black;" class="dropdown-item" asp-action="CM" asp-controller="ContentManagement"> Edit Places</a>
+            <a style="color:black;" class="dropdown-item" asp-action="CM" asp-controller="ContentManagement"> Delete Places</a>
+            <div class="dropdown-divider"></div>
+            @*<a class="dropdown-item" href="#">Separated link</a>*@
+          </div>
+}

@@ -1,0 +1,129 @@
+﻿@model IEnumerable<Place>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>@ViewBag.admin</h1>
+
+@if (ViewBag.admin == 1)
+{
+    <h1>@ViewBag.admin</h1>
+    <style>
+        .admin{
+            display:inline;
+            
+        }
+    </style>
+}
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Poppins',sans-serif;
+    }
+    body{
+           width:100%;
+    min-height:100vh;
+    padding:1%;
+    background-image:url(images/background.jpg);
+    background-position:center;
+    background-size:cover;
+  
+    }
+.container{
+ display:flex;
+ align-items:center;
+ justify-content:center; 
+ display:flex;
+}
+ .search-bar{
+ width:100%;
+ max-width:700px;
+ /*background:rgba(255,255,255,0.2);*/
+ background:white;
+ display:flex;
+ align-items:center;
+ border-radius:60px;
+ padding:10px 20px;
+      /*backdrop-filter:blur(4px) saturate(180%);*/
+ 
+ }
+ .search-bar input{
+        background:transparent;
+        flex:1;
+        border:0;
+        outline:none;
+        padding:24px 20px;
+        font-size:20px;
+        color:#cac7ff;
+   
+
+ }
+ ::placeholder{
+     color:#cac7ff;
+ }
+ .search-bar img{
+     width:25px;
+ 
+ }
+
+ .search-bar button{
+ 
+     border:0;
+     border-radius:50%;
+     width:60px;
+     height:60px;
+     background:#58629b;
+
+
+ }
+</style>
+
+<html>
+    <head>
+           <div class="container">
+              <form  class="search-bar">
+            <input type="text" placeholder="Seach Places" name="Value" >
+            <button type="submit" asp-action="Search" asp-controller="Home"><img src="images/search.png"></img></button>
+
+        </form>
+         </div>
+
+         </head>
+
+       
+
+               
+        <body>
+            <div class="display-5" style="margin-left:250px;color:white;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"><strong>Welcome to trip advisors</strong></div>
+ 
+                <div class="card border-dark mb-3" style="max-width:20rem; display:inline-block;margin:100px;color:white;">
+  <div class="card-header"> Destination <i class="bi bi-image-alt"></i></div>
+  <div class="card-body">
+    <h4 class="card-title">Trending Destinations — India</h4>
+    <p class="card-text">From lesser-known cities to new escapes, these places are on the up and up. You heard it here first.</p>
+<button type="button" class="btn btn-dark "> <a asp-action="GetAllPlaces" asp-controller="Place">See Now </a>  </button>
+  </div>
+</div>
+
+<div class="card border-dark mb-3"style="max-width: 20rem; display:inline-block;margin:100px; color:white;">
+  <div class="card-header">Flights <i class="bi bi-airplane"></i></div>
+  <div class="card-body">
+    <h4 class="card-title">Find cheap flights and airline tickets</h4>
+    <p class="card-text">“Where will tomorrow take you?” – KingFisher. <br /><br /></p>
+  <button type="button" class="btn btn-dark "><a asp-action="SearchFlight" asp-controller="FlightReservation">See Now </a></button>
+  </div>
+</div>
+   </div>
+
+
+
+        </body>
+
+
+
+   
+
+
+</html>

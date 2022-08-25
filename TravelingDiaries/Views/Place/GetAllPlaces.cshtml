@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TravelingDiaries.Models.Place>
+
+
+    <style>
+        body{
+             background-image: url("https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg");
+ background-color: #cccccc;
+
+
+           
+        
+        }
+    </style>
+
+
+<body>
+    @foreach(var place in Model){
+
+<div class="card border-danger mb-3" style="max-width: 20rem; display:inline-block;margin:20px;">
+  <img class="card-img-top" src="@place.Image" alt="Card image cap" style="height:213px">
+  <div class="card-body">
+    <h5 class="card-title"><strong>@place.PlaceName</strong></h5>
+    <hr>
+   <div style=" height:96px;width:288px;"><p class="card-text">@place.ShortDescription</p></div> 
+   <br>
+   <br>
+   <hr>
+    <h6 class="card-text"><strong> Rs:@place.PackagePrice</strong></h6>
+    <hr>
+    <a asp-controller="Place" asp-route-id="@place.PlaceID" asp-action="PlaceDetail" class="btn btn-secondary">See More</a>
+  </div>
+</div>
+
+
+
+}
+</body>
+
+

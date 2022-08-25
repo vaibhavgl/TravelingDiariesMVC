@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TravelingDiaries.Models.Hotel>
+
+@{
+    ViewData["Title"] = "GetAllHotels";
+}
+
+ <style>
+        body{
+              /*background-image: url("https://images.pexels.com/photos/705773/pexels-photo-705773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");*/
+              
+              height: 100%;
+             
+
+                background:white;
+              color:black;
+        
+        }
+    </style>
+
+<h1>Choose Your Luxirious Stay !!</h1>
+
+<body>
+    @foreach(var hotel in Model){
+
+<div class="card border-danger mb-3" style="max-width: 20rem; display:inline-block;margin:20px;">
+  <img class="card-img-top" src="@hotel.ImageUrl" alt="Card image cap" style="height:213px">
+  <div class="card-body">
+    <h5 class="card-title"><strong>@hotel.Name</strong></h5>
+   <div style=" height:96px;width:288px;"><p class="card-text">@hotel.ShortDescription</p></div> 
+    <h6 class="card-text"><strong> Rs:@hotel.Price</strong></h6>
+
+    <a asp-controller="Hotel" asp-route-id="@hotel.HotelId" asp-action="HotelDetail" class="btn btn-primary">Know More</a>
+  </div>
+</div>
+
+
+
+}
+</body>
+
+
+
+
+

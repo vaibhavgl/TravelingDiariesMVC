@@ -1,0 +1,93 @@
+﻿@model IEnumerable<TravelingDiaries.Models.FlightBooking>
+
+@{
+    ViewData["Title"] = "BookingCart";
+}
+    <style>
+   body{
+        color:white;
+               width:100%;
+ 
+    background-image:url(https://images.pexels.com/photos/615060/pexels-photo-615060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-position:center;
+    background-size:cover;
+      
+    }
+    
+</style>   
+
+<table  class=" table" style="background:white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PassengerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdhaarId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfFlight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Class)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketPrice)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassengerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdhaarId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfFlight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketPrice)
+            </td>
+            <td>
+                
+                <button class="btn btn-success" ><a style="text-decoration: none;color:white;" asp-action="Details" asp-route-id="@item.PassengerId">Ticket</a> </button>
+               
+            </td>
+            <td>
+                <button onclick="myFunction()" class="btn btn-danger" ><a style="text-decoration: none;color:white;" asp-action="Delete" asp-route-id="@item.PassengerId"> Cancel Ticket</a> </button>
+
+       
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script>
+function myFunction() {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                Swal("Poof! Your imaginary file has been deleted!", {
+                    icon: "success",
+                });
+            } else {
+                Swal("Your imaginary file is safe!");
+            }
+        });
+}
+</script>

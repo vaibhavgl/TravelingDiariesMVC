@@ -1,0 +1,104 @@
+﻿@model TravelingDiaries.Models.Place
+
+@{
+    ViewData["Title"] = "Create";
+}
+@if(TempData["Success"]!=null){
+    <h2>@TempData["Success"]</h2>
+}
+
+<style>
+    body{
+    
+/*        color:white;*/
+               width:100%;
+    min-height:100vh;
+    padding:1%;
+    background-image:url(https://images.pexels.com/photos/257352/pexels-photo-257352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-position:center;
+    background-size:cover;
+      }
+</style>
+<h1>Welcome to Admin Dashboard</h1>
+
+<h4>Here you can create a new place records.</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PlaceName" class="control-label"></label>
+                <input  id="name" asp-for="PlaceName" class="form-control" />
+                <span asp-validation-for="PlaceName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image1" class="control-label"></label>
+                <input asp-for="Image1" class="form-control" />
+                <span asp-validation-for="Image1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image2" class="control-label"></label>
+                <input asp-for="Image2" class="form-control" />
+                <span asp-validation-for="Image2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image3" class="control-label"></label>
+                <input asp-for="Image3" class="form-control" />
+                <span asp-validation-for="Image3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PackagePrice" class="control-label"></label>
+                <input asp-for="PackagePrice" class="form-control" />
+                <span asp-validation-for="PackagePrice" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" onclick="return ValidateInput()" />
+                  <button class="btn btn-success"><a style="color:white; text-decoration:none;" asp-action="Index">Back to List</a></button>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+function ValidateInput() 
+{
+    if (document.getElementById("name").value=="") 
+    
+    { 
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Name is a required field!',
+            footer: '<a href="#">Why do I have this issue?</a>'
+        });
+        return false;
+    
+    }
+    return true;
+
+}
+    </script>
+}

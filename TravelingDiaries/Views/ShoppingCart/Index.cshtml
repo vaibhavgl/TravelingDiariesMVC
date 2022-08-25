@@ -1,0 +1,81 @@
+﻿@using TravelingDiaries.ViewModel
+@model ShoppingCartViewModel
+
+<partial name="_Banner.cshtml">
+
+<style>
+    body {font-family: Verdana, sans-serif;
+    background:rgba(255,255,255, 0.9);
+}
+</style>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+
+        <th>Places</th>
+        <th class="text-right">Price</th>
+        <th class="text-right">Subtotal</th>
+                
+                   <th class="text-right">Member</th>
+                <th class="text-right">Update Member</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+    {
+        <tr>
+            @*<td class="text-center">@line.Amount</td>*@
+            <td class="text-left"> @line.Place.PlaceName</td>
+            <td class="text-right">Rs @line.Place.PackagePrice</td>
+            <td class="text-right">Rs
+                @((line.Amount * line.Place.PackagePrice))
+            </td>
+                 
+                  <td class="text-center"> @line.Amount</td>
+         <td style="align-content:center">
+             <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-Id="@line.Place.PlaceID" ><button class=" btn btn-danger" style="margin-left:33px" ><i class="bi bi-dash-circle-fill" style="display:inline-block"></i></button> </a>
+             <span>@line.Amount</span>
+             <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-Id="@line.Place.PlaceID"><button class=" btn btn-success" ><i  class="bi bi-plus-circle-fill"></i></button> </a>
+
+           
+             
+         </td> 
+        </tr>
+    }
+    </tbody>
+    <tfoot>
+    <tr>
+            @if (ViewBag.Couponvalue !=0)
+            {
+
+               
+                 <td class="text-right">Amazing u are getting  discount of @ViewBag.Couponvalue %</td>
+
+            }
+            <td  class="text-right">Total:</td>
+        <td class="text-right">
+            @{
+                        decimal amount = (Model.ShoppingCartTotal * (100 - ViewBag.Couponvalue) / 100);
+                        
+                    }
+         Total Amount: Rs @amount
+        </td>
+    </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" asp-controller="Order" asp-action="Checkout">Checkout</a>
+     <a class="btn btn-danger" asp-controller="ShoppingCart" asp-action="ClearCart">Clear Cart</a>
+     <br></br>
+     <form class="form-group">
+           <input type="text"  placeholder="Write Coupon Code Here" name="Code"><br>
+           <br></br>
+         <button class="btn btn-warning" type="submit" asp-controller="ShoppingCart" asp-action="Index">Try Coupon</button>
+
+     </form>
+     
+</div>
+<br></br>

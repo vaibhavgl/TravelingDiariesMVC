@@ -1,0 +1,37 @@
+﻿<style>
+    body{
+               width:100%;
+    min-height:100vh;
+    padding:1%;
+    background-image:url(https://images.pexels.com/photos/929606/pexels-photo-929606.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-position:center;
+    background-size:cover;
+      
+    }
+</style>
+<h1 style="text-align:center" >Flight Time-Table</h1>
+<br />
+
+<table class=" table-active" >
+  <thead>
+    <tr>
+      <th scope="col">Flight Id</th>
+      <th scope="col">Flight Name</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+       <th scope="col">Time</th>
+    </tr>
+  </thead>
+    <tbody>
+@foreach(var flight in Model)
+{
+    <tr>
+      <td>@flight.FlightId</td>
+      <td>@flight.FlightName</td>
+      <td>@flight.From</td>
+      <td>@flight.To</td>
+      <td>@flight.Time</td>
+    </tr>
+}
+</tbody>
+</table>

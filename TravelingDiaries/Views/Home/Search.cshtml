@@ -1,0 +1,42 @@
+﻿<style>
+    body{
+         background-image:url("@ViewBag.Pic");
+ /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  /*background-position: center;*/
+  background-repeat: no-repeat;
+  background-size: cover;
+     
+    }
+</style>
+
+@if(@ViewBag.CountPlaces==0){
+
+        <h1 style="margin-top:250px;">Sorry, we couldn't find your search</h1>
+         
+
+    }
+  
+        @if(@ViewBag.CountPlaces!=0)
+        {
+        <h1>Search result matching  @ViewBag.CountPlaces places</h1>
+        @foreach (var place in Model) {
+
+            <div class="card border-danger mb-3" style="max-width: 20rem; display:inline-block;margin:100px;">
+                <img class="card-img-top" src="@place.Image" alt="Card image cap" style="height:213px">
+                <div class="card-body" style="color:black;">
+                    <h5 class="card-title"><strong>@place.PlaceName</strong></h5>
+                    <div style=" height:96px;width:288px;"><p class="card-text">@place.ShortDescription</p></div> 
+                    <h6 class="card-text"><strong> Rs:@place.PackagePrice</strong></h6>
+                    <a asp-controller="Place" asp-route-id="@place.PlaceID" asp-action="PlaceDetail" class="btn btn-primary">See More</a>
+                </div>
+            </div>
+        }
+
+
+}
+
+
+

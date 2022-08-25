@@ -1,0 +1,71 @@
+﻿@model TravelingDiaries.Models.FlightBooking
+
+@{
+    ViewData["Title"] = "BookFlight";
+}
+<style>
+    body{
+        background-image:url("https://images.pexels.com/photos/163771/airport-airplanes-gates-flight-line-163771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+      height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+        
+    }
+</style>
+<h1>BookFlight</h1>
+
+<h4>FlightBooking</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Booking">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PassengerName" class="control-label"></label>
+                <input asp-for="PassengerName" class="form-control" />
+                <span asp-validation-for="PassengerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdhaarId" class="control-label"></label>
+                <input asp-for="AdhaarId" class="form-control" />
+                <span asp-validation-for="AdhaarId" class="text-danger"></span>
+            </div>
+
+            @if (TempData["Back"] != null)
+            {
+                <div class="form-group">
+                    <label asp-for="DateOfFlight" class="control-label"></label>
+                <input asp-for="DateOfFlight" class="form-control" />
+                <span asp-validation-for="DateOfFlight" class="text-danger"></span>
+            </div>
+        
+            }
+            <div class="form-group" style="display:inline-block">
+                <label asp-for="Class" class="control-label"></label>
+                <select asp-for="Class" class="form-control w3-input w3-border">
+                
+                <option selected value="Economy">Economy Class</option>
+                <option value="Business">Business Class</option>
+                <option value="Rich">Private Class</option>
+                </select>
+                <span asp-validation-for="Class" class="text-danger"></span>
+            </div>
+
+            <div style="inline-block">
+
+            </div>
+            
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

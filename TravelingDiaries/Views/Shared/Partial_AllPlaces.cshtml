@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TravelingDiaries.Models.Place>
+
+@{
+    ViewData["Title"] = "GetAllPlaces";
+}
+
+<h1>Here are all the places</h1>
+@foreach(var place in Model){
+
+<div class="card border-danger mb-3" style="max-width: 20rem; display:inline-block;margin:100px;">
+  <img class="card-img-top" src="@place.Image" alt="Card image cap" style="height:213px">
+  <div class="card-body">
+    <h5 class="card-title"><strong>@place.PlaceName</strong></h5>
+   <div style=" height:96px;width:288px;"><p class="card-text">@place.ShortDescription</p></div> 
+    <h6 class="card-text"><strong> Rs:@place.PackagePrice</strong></h6>
+    <a asp-controller="Place" asp-route-id="@place.PlaceID" asp-action="PlaceDetail" class="btn btn-primary">See More</a>
+  </div>
+</div>
+
+
+
+}
+

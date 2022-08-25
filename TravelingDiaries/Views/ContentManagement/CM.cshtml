@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TravelingDiaries.Models.Place>
+
+@{
+    ViewData["Title"] = "CM";
+}
+<style>
+    body{  
+        color:black;
+               width:100%;
+    min-height:100vh;
+    padding:1%;
+    background-image:url( https://images.pexels.com/photos/7582013/pexels-photo-7582013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-position:center;
+    background-size:cover;
+    }
+   
+</style>
+
+
+<partial name="_Notifications">
+<table class="table table-light " style=" color:black;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+      
+            <th>
+                @Html.DisplayNameFor(model => model.PackagePrice)
+            </th>
+            <th>Edit</th>
+                <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlaceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.PackagePrice)
+            </td>
+          <td>
+            <button class="btn btn-warning">  <a asp-action="EditPlace" asp-route-id="@item.PlaceID" style="text-decoration:none;color:white;" >Edit</a></button>
+          </td>
+          
+              <td>
+                <button class="btn btn-danger">  <a style="text-decoration:none;color:white;" asp-action="Delete" asp-route-id="@item.PlaceID" asp-controller="ContentManagement">Delete</a></button>
+            </td>
+          
+        </tr>
+}
+    </tbody>
+</table>
